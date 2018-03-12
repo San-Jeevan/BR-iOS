@@ -68,7 +68,6 @@ class MediaViewCell: UICollectionViewCell {
         
     }
     
-    
     func select(){
 //        let overlayImage = UIImage(named:"playicon")
 //        let overlayImageView = UIImageView(image:overlayImage)
@@ -82,17 +81,21 @@ class MediaViewCell: UICollectionViewCell {
 //        }
     }
     
-    func fillData(thumbUrl: AwsVideo)  {
+    func fillData(thumbUrl: AwsVideo, caseBoolean: Bool, caseUrlStr: String)  {
  
         self.imageView.sd_setImage(with: URL(string: thumbUrl.thumbnail), placeholderImage: UIImage(named: "placeholder.png"));
+        if(caseBoolean == true){
+            self.btnSettings.isHidden = false
+        }
+        else{
+            self.btnSettings.isHidden = true
+        }
         
         if(thumbUrl.awsUrl==nil || thumbUrl.awsUrl == "" ) {
             self.playiconImage.isHidden = true;
         }
         else {
             self.playiconImage.isHidden = false;
-            
-            
         }
 
         if thumbUrl.logo != nil || thumbUrl.logo != "" {

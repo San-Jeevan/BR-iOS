@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="I9w-x4-mAi">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="I9w-x4-mAi">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13527"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -351,14 +351,16 @@
                                                     <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="agp-RX-r7G">
-                                                    <rect key="frame" x="310" y="597" width="50" height="50"/>
-                                                    <color key="backgroundColor" red="1" green="0.87843137250000003" blue="0.090196078430000007" alpha="1" colorSpace="calibratedRGB"/>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="agp-RX-r7G">
+                                                    <rect key="frame" x="310" y="559" width="50" height="50"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="50" id="2xz-7E-6bn"/>
                                                         <constraint firstAttribute="height" constant="50" id="NY5-7Z-AIf"/>
                                                     </constraints>
                                                     <state key="normal" backgroundImage="ic_support"/>
+                                                    <connections>
+                                                        <action selector="btnSettingsTapped:" destination="pwN-Wv-Ioh" eventType="touchUpInside" id="5J2-XB-P0f"/>
+                                                    </connections>
                                                 </button>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ftK-D2-SEs">
                                                     <rect key="frame" x="150" y="296" width="75" height="75"/>
@@ -395,7 +397,7 @@
                                             <constraint firstItem="3zO-hl-86C" firstAttribute="leading" secondItem="nod-H6-cIT" secondAttribute="leading" id="dba-IY-RMA"/>
                                             <constraint firstAttribute="bottom" secondItem="tWf-mB-zkk" secondAttribute="bottom" id="eEs-OM-MCa"/>
                                             <constraint firstItem="e0g-QD-1FX" firstAttribute="leading" secondItem="3tI-d0-8K5" secondAttribute="leading" constant="10" id="fVg-KE-IxH"/>
-                                            <constraint firstItem="agp-RX-r7G" firstAttribute="top" secondItem="e0g-QD-1FX" secondAttribute="bottom" constant="10" id="iDs-Eb-PxN"/>
+                                            <constraint firstItem="agp-RX-r7G" firstAttribute="top" secondItem="e0g-QD-1FX" secondAttribute="bottom" constant="-28" id="iDs-Eb-PxN"/>
                                             <constraint firstItem="tWf-mB-zkk" firstAttribute="top" secondItem="e0g-QD-1FX" secondAttribute="bottom" id="iPE-bn-3bZ"/>
                                             <constraint firstItem="ftK-D2-SEs" firstAttribute="centerY" secondItem="3tI-d0-8K5" secondAttribute="centerY" id="jA8-fj-M7J"/>
                                             <constraint firstItem="eAN-sU-KFI" firstAttribute="height" secondItem="AJ2-jd-oSc" secondAttribute="height" id="kRh-wf-Ge9"/>
@@ -504,7 +506,7 @@
         <image name="ic_language" width="72" height="72"/>
         <image name="ic_play" width="210" height="210"/>
         <image name="ic_qrcode" width="72" height="72"/>
-        <image name="ic_support" width="256" height="256"/>
+        <image name="ic_support" width="27" height="27"/>
         <image name="menu-icon" width="2184" height="2000"/>
         <image name="qrcode" width="122" height="122"/>
     </resources>

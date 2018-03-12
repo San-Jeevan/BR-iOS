@@ -7,6 +7,7 @@ import UIKit
 import SwiftyJSON
 import MobilePlayer
 import Photos
+import SafariServices
 
 import AVKit
 import AVFoundation
@@ -15,11 +16,12 @@ protocol GoProtocol : class {
     func barcodeScanned(_ itemId: String)
 }
 
-class GoViewController: UIViewController, GoProtocol, UICollectionViewDataSource, UICollectionViewDelegate {
+class GoViewController: UIViewController, GoProtocol, UICollectionViewDataSource, UICollectionViewDelegate, UIWebViewDelegate {
     
     var timer : Timer!
     var timerCount: NSInteger = 0
     var codeScanned : String = ""
+    var webV : UIWebView!;
     var qrViewController: UIViewController!
     @IBOutlet weak var btnClose: UIButton!
     
@@ -47,6 +49,21 @@ class GoViewController: UIViewController, GoProtocol, UICollectionViewDataSource
         NetworkManager.sharedInstance.getItemByCode(itemId, onCompletion: itemFetched);
     }
     
+    @IBAction func btnSettingsTapped(_ sender: Any) {
+//        self.webV = UIWebView();
+//        self.webV.frame  = CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height)
+//        webV.delegate = self
+//        self.webV.loadRequest(NSURLRequest(url: NSURL(string: self.caseUrl)! as URL) as URLRequest)
+//        let url = NSURL (string: self.caseUrl);
+//        let requestObj = NSURLRequest(URL: url!);
+//        self.webV.loadRequest(requestObj);
+        
+//        self.view.addSubview(webV)
+        
+        let svc = SFSafariViewController(url: URL(string:self.caseUrl)!)
+        self.present(svc, animated: true, completion: nil)
+    }
+    
     @IBAction func btnCloseTapped(_ sender: Any) {
         
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
@@ -68,7 +85,9 @@ class GoViewController: UIViewController, GoProtocol, UICollectionViewDataSource
     @IBOutlet weak var collectionView: UICollectionView!
     var assetArray = [AwsVideo]()
     var cellIdentifier = "MediaViewCell"
-    
+    var caseBool = false;
+    var caseUrl = "";
+    var caseName = "";
     
     
     func itemFetched(json: JSON){
@@ -80,6 +99,10 @@ class GoViewController: UIViewController, GoProtocol, UICollectionViewDataSource
         if (success != nil) {
             if(success)!{
                 assetArray = [AwsVideo]();
+                caseBool = data["asset"]["case"].bool!
+                if(caseBool == true){
+                    caseUrl = data["asset"]["caseUrl"].string!
+                }
                 for (key, subJson) in data["videos"] {
                     if let description = subJson["thumbnail"].string {
                         print(description)
@@ -161,7 +184,7 @@ class GoViewController: UIViewController, GoProtocol, UICollectionViewDataSource
         cell.lblPage.text = String(format: "%ld of %ld", indexPath.row + 1,assetArray.count)
         cell.bgSeconds.layer.cornerRadius = 5.0
         let phasset = assetArray[indexPath.row]
-        cell.fillData(thumbUrl: phasset)
+        cell.fillData(thumbUrl: phasset,caseBoolean: caseBool,caseUrlStr: caseUrl)
         cell.playiconImage.tag = indexPath.row
         return cell
     }
@@ -173,7 +196,7 @@ class GoViewController: UIViewController, GoProtocol, UICollectionViewDataSource
         cell.lblPage.text = String(format: "%ld of %ld", indexPath.row + 1,assetArray.count)
         cell.bgSeconds.layer.cornerRadius = 5.0
         let phasset = assetArray[indexPath.row]
-        cell.fillData(thumbUrl: phasset)
+        cell.fillData(thumbUrl: phasset,caseBoolean: caseBool,caseUrlStr: caseUrl)
         cell.playiconImage.tag = indexPath.row
         return cell
         
