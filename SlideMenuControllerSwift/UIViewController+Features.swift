@@ -14,7 +14,7 @@ extension UIViewController {
     func showAPIResponseError (message:String) {
         
         let alertController = UIAlertController.init(title: "Error", message: message, preferredStyle:UIAlertControllerStyle.alert)
-        let action = UIAlertAction.init(title: "Okay", style: UIAlertActionStyle.cancel, handler: { (action) in
+        let action = UIAlertAction.init(title: "OK", style: UIAlertActionStyle.cancel, handler: { (action) in
             self.dismiss(animated: true, completion: nil)
         })
         
